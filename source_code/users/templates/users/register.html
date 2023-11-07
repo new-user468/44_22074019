@@ -1,0 +1,18 @@
+{% extends "recipe/base.html" %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div>
+  <form method="POST"  id="reg_form">
+  	{% csrf_token %}
+  	<fieldset>
+  		<legend> <h1>Wecome To NutriBucket</h1></legend>
+  		{{ form.as_p }}
+  	</fieldset>
+    <div>
+  	 <button id="button" type="submit" style="display: inline;">Sign Up</button>
+     <small style="float: right; display: inline;"><br>Already have an account?<a href="{% url 'login' %}">Log in</a></small>
+    </div>
+  </form>
+</div>
+
+{% endblock main %}

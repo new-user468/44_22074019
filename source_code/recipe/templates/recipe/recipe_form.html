@@ -1,0 +1,20 @@
+{% extends "recipe/base.html" %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div>
+  <form method="POST"  id="recipe_create_form">
+    {% csrf_token %}
+    <fieldset>
+      <legend> <h1>Upload Recipe</h1></legend>
+      <div id="form1">{{ form1.as_p}}</div>
+      <div id="form2">{{ form2.as_p }}</div>
+      <div id="form3">{{ form3.as_p }}</div>
+    </fieldset>
+    <div>
+     <button id="button" type="submit">{{ submit_label }}</button>
+    </div>
+  </form>
+</div>
+
+{% endblock main %}
+

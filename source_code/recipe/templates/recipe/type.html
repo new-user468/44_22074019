@@ -1,0 +1,16 @@
+{% extends 'recipe/base.html' %}
+{% block main %}
+	<h1 class="category_heading"><em><u>{{typ_name}}</u></em></h1>
+	{% for record in Recipe %}
+    {% if typ_name in record.Recipe_type  %}
+      <div class="gallery">
+        <a target="_blank" href="{% url 'recipe-detail' record.Recipe_id %}">
+          <img src="{{ record.img.url }}">
+        </a>
+        <div class="desc">{{record.Recipe_name}}<br></div>
+      </div>
+    {% endif %}
+  {% endfor %}
+	
+
+{% endblock main %}

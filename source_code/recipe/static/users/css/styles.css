@@ -1,0 +1,128 @@
+#reg_form{
+	width: 50%;
+	/*background-color: white;*/
+	margin-top: 10px;
+	font-family: comic sans ms, comic sans, cursive;
+	border: none;
+	border-radius: 8px;
+}
+
+#button{
+	width:20% ;
+	font-weight: bold;
+	display: inline;
+	border-color: blue;
+	color: blue;
+	border-top: 1px solid black;
+}
+
+#button:hover{
+	background-color: blue;
+	color: white;
+}
+
+#reg_form ul{
+	list-style-type: square;
+}
+
+#reg_form li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    float: none;
+    padding: 0px;
+    font-size: 14px;
+}
+
+#hint_id_username, #hint_id_password2, #hint_id_password2{
+	font-size: 14px;
+	margin-top: 0px;
+}
+
+input{
+	width: 50%;
+	border-radius: 5px;
+}
+
+label{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+[id^="error"], [class^="alert"] {
+	color: red;
+	font-size: 14px;
+	font-weight: normal;
+	margin-top: 0px;
+}
+
+#div_id_password1{
+	margin-top: 10px;
+}
+
+#profile-pic{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	float: left;
+	margin-right: 10px;
+}
+
+.prof-box{
+	margin-top: 20px;
+	margin-right: 25%;
+	margin-left: 25%;
+	padding: 10px;
+	/*background-color: white;*/
+	height: 150px;
+
+}
+
+.prof-box h1,p{
+	margin-top: 0px;
+}
+
+.prof-box h1{
+	font-size: 36px;
+}
+
+.user-prof-info {
+	float: left;
+	width: 70%;
+}
+
+#prof_form{
+	margin-top: 0px;
+	width: 50%;
+	margin-right: 25%;
+	margin-left: 25%;
+	/*background-color: white;*/
+	margin-top: 10px;
+	font-family: comic sans ms, comic sans, cursive;
+	border-radius: 8px;
+	border: none;
+}
+
+#prof_form #div_id_pic{
+	margin-top: 20px;
+}
+
+#form1, #form2, #form3{
+	float: left;
+	width: 30%;
+}
+
+#form2{
+	width: 40%;
+}
+
+#recipe_create_form{
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+#reset_pass{
+	display: inline;
+	float: right;
+}

@@ -1,0 +1,26 @@
+{% extends 'recipe/base.html' %}
+{% block main %}
+	<h1 class="category_heading"><em><u>{{cat_name}}</u></em></h1>
+	{% comment %} {% for record in Recipe %}
+    {% if cat_name in record.Recipe_category  %}
+      <div class="gallery">
+        <a target="_blank" href="{% url 'recipe-detail' record.Recipe_id %}">
+          <img src="{{ record.img.url }}">
+        </a>
+        <div class="desc">{{record.Recipe_name}}<br></div>
+      </div>
+    {% endif %}
+  {% endfor %} {% endcomment %}
+
+  {% for recipe in recipes %}
+    <div class="gallery">
+        <a target="_blank" href="{% url 'recipe-detail' recipe.Recipe_id %}">
+            <img src="{{ recipe.img.url }}">
+        </a>
+        <div class="desc">{{ recipe.Recipe_name }}<br></div>
+    </div>
+{% endfor %}
+
+	
+
+{% endblock main %}

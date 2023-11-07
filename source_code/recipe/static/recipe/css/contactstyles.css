@@ -1,0 +1,45 @@
+form fieldset{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+}
+
+form legend{
+	text-decoration: underline;
+}
+	
+
+
+
+#msgboxin {
+	float: right;
+	border-radius: 25px;
+	padding:  10px;
+	display: inline-block;
+	position: relative;
+	right: 20px;
+	top: 20px;
+	width: 35%;
+	/*background-color: black;*/
+	color: black;
+}
+
+
+.content {
+	display: inline-block;
+	text-align: left;
+	width: 50%;
+	color: black;
+	padding-left: 10px;
+}
+
+#msg {
+	height: 80px;
+	width: 90%;
+}
+
+#name, #email {
+	width: 90%;
+}
+

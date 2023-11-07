@@ -1,0 +1,22 @@
+{% extends "recipe/base.html" %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div>
+  <form method="POST"  id="reg_form">
+  	{% csrf_token %}
+  	<fieldset>
+  		<legend> <h1> Login</h1></legend>
+  		{{ form.as_p }}
+  	</fieldset>
+    <div>
+  	 <button id="button" type="submit">Login</button>
+     <small><a href="{% url 'password_reset' %}" id="reset_pass">Forgot Password?</a></small>
+    </div>
+  </form>
+
+  <div>
+  	<small><br>Not Registered?<a href="{% url 'register' %}">Sign Up Now</a></small>
+  </div>
+</div>
+
+{% endblock main %}

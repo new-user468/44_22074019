@@ -1,0 +1,27 @@
+{% extends "recipe/base.html" %}
+{% load crispy_forms_tags %}
+{% block main %}
+
+<div class="prof-box">
+	<img src="{{ user.profile.pic.url }}" id="profile-pic">
+	<div class="user-prof-info">
+		<h1>{{ user.username }}</h1>
+		<p>{{ user.email }}</p>
+	</div>
+</div>
+
+	<form method="POST" enctype="multipart/form-data" id="prof_form">
+		{% csrf_token %}
+		<fieldset>
+			<legend> <h1>Profile Info</h1></legend>
+			{{ u_form.as_p }}
+			{{ p_form.as_p }}
+		</fieldset>
+		<div class="profile-buttons">
+		 <button id="button" type="submit">Update</button>
+		</div>
+	</form>
+	
+
+
+{% endblock main %}

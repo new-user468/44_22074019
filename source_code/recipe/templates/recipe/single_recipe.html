@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Recipe || Final</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="{% static 'recipe/css/single_recipestyles.css' %}" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'recipe/css/main.css' %}" />
+  </head>
+
+
+  <body>
+    <!-- nav  -->
+   <nav id="navbar">
+    <ul>
+      <li>
+        <a href="{% url 'recipe-home' %}" style="padding: 0px"><img src="{% static 'recipe/img/base_imgs/logo.jpeg' %}" height="50px"></a>
+      </li>
+
+      <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Categories</a>
+    <div class="dropdown-content">
+      <a href="{% url 'recipe-category' cat_name='Soup' %}">Soup</a>
+      <a href="{% url 'recipe-category' cat_name='Salad' %}">Salad</a>
+      <a href="{% url 'recipe-category' cat_name='Starter' %}">Starter</a>
+      <a href="{% url 'recipe-category' cat_name='Meal' %}">Meal</a>
+      <a href="{% url 'recipe-category' cat_name='Dessert' %}">Dessert</a>
+      <a href="{% url 'recipe-category' cat_name='Drink' %}">Drink</a>
+      <a href="{% url 'recipe-category' cat_name='Bakery' %}">Bakery</a>
+    </div>
+  </li>
+
+      <li>
+        <a href="{% url 'recipe-home' %}">Home</a>
+      </li>
+
+      <li>
+        <a href="{% url 'recipe-about' %}">About</a>
+      </li>
+
+      <li>
+        <a href="{% url 'recipe-contact' %}">Contact</a>
+      </li>
+    <div style="display: inline; float: right">
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'recipe-create' %}">Upload Recipe</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'user-recipe' user.username %}">My Recipes</a></li>
+
+      {% else %}
+        <li>
+          <a href="{% url 'register' %}">Sign Up</a>
+        </li>
+
+        <li>
+     <a href="{% url 'login' %}">Login</a>
+        </li>
+      {% endif %}
+    </div>
+    </ul>
+      </nav>
+    <!-- end of nav -->
+
+    <main class="page">
+      <div class="recipe-page">
+        <section class="recipe-hero">
+          <img
+            src="{{ object.img.url }}"
+            class="img recipe-hero-img"
+          />
+          <article class="recipe-info">
+            <h2> {{ object.Recipe_name}} </h2>
+            <p>
+              {{ object.Recipe_description }} 
+            </p>
+            <div class="recipe-icons">
+              <article>
+                <i class="fas fa-clock"></i>
+                <h5>prep time</h5>
+                <p>{{ object.recipe_prep_details.preparation_time }}</p>
+              </article>
+              <article>
+                <i class="fas fa-user-friends"></i>
+                <h5>serving</h5>
+                <p>{{ object.recipe_prep_details.num_of_servings }}</p>
+
+                <p class="recipe-tags">
+              Tags : <a href="{% url 'recipe-category' cat_name=object.Recipe_category %}">{{object.Recipe_category}}</a>
+              <a href="{% url 'recipe-type' typ_name=object.Recipe_type %}">{{object.Recipe_type}}  </a>            </p>
+              </article>
+            </div>
+          </article>
+        </section>
+        <!-- content -->
+        <section class="recipe-content">
+          <article>
+            <h4>instructions</h4>
+            <div class="single-instruction">
+              <p>
+               <pre>{{object.recipe_prep_details.instructions}}</pre>
+              </p>
+            </div>
+          </article>
+
+          <article class="second-column">
+            <div>
+              <h4>ingredients</h4>
+              <p class="single-ingredient">
+                <pre>{{object.recipe_prep_details.ingredients}}</pre>
+              </p>
+            </div>
+          </article>
+
+          <article class="thrd-column">
+            <div>
+              <h4>Nutritional Content</h4>
+              <p>Calories per serving : {{ object.nutri_content.calories_per_serving}}</p>
+              <p>Carbs : {{ object.nutri_content.carbs}}</p>
+              <p>Protein : {{ object.nutri_content.proteins}}</p>
+              <p>Trans Fats : {{ object.nutri_content.trans_fats}}</p>
+              <p>Saturated Fats : {{ object.nutri_content.saturated_fats}}</p>
+              <p>Cholestrol : {{ object.nutri_content.cholestrol}}</p>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <div class="userlink">
+        {% if object.user != NULL %}
+          <h3>Uploaded By: <a href="{% url 'user-recipe' object.user.username %}"><em>
+          {{ object.user }}</a></em></h3>
+        {% endif %}
+      </div>
+
+      <div class='recipe-changes'>
+     <a href="{% url 'recipe-delete' object.Recipe_id %}"><button id="delete_button" type="submit">Delete Recipe</button></a>
+     <a href="{% url 'recipe-update' object.Recipe_id %}"><button id="update_button" type="submit">Update Recipe</button></a>
+    </div>
+
+    </main>
+
+
+    
+    <footer>
+
+      <a href="{% url 'recipe-contact' %}"><button id="contact-button" type="button">Contact us here!!</button></a>
+  </footer>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>

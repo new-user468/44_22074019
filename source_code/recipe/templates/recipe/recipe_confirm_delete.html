@@ -1,0 +1,16 @@
+{% extends "recipe/base.html" %}
+{% block main %}
+<div>
+  <form method="POST"  id="recipe_form">
+    {% csrf_token %}
+    <fieldset>
+      <legend> <h1>Delete Recipe</h1></legend>  
+      <h2> Are you sure you want to delete the recipe {{ object.Recipe_name }} </h2>
+    </fieldset>
+    <div>
+     <button id="delete_button" type="submit">Yes, Delete</button>
+    </div>
+  </form>
+</div>
+
+{% endblock main %}

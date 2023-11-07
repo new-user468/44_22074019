@@ -1,0 +1,111 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+	<title>{{ title }}</title>
+
+  {% block head %}{% endblock head %}
+
+	<link rel="stylesheet" href="{% static 'recipe/css/homestyles.css' %}">
+  <link rel="stylesheet" href="{% static 'recipe/css/aboutstyles.css' %}">
+  <link rel="stylesheet" href="{% static 'recipe/css/contactstyles.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Audiowide|Pacifico|Comic Sans MS|Roboto">
+  
+
+
+
+  
+ 
+  
+</head>
+<body>
+	<header>
+
+
+		<div id="log">
+    <ul>
+      {% if user.is_authenticated %}
+        <li>
+    <a href="{% url 'user-recipe' user.username %}">My Recipes</a>
+    <a href="{% url 'recipe-create' %}">Upload Recipe</a>
+    <a href="{% url 'profile' %}">Profile</a>
+    <a href="{% url 'logout' %}">Logout</a>
+      </li>
+
+      {% else %}
+        <li>
+      <a href="{% url 'register' %}">Sign Up</a>
+        </li>
+
+        <li>
+     <a href="{% url 'login' %}">Login</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+
+    
+  <div id="top-text">
+    <h1 id="title"><em><strong>NutriBucket</strong></em></h1>
+    <p id="subtitle"><em>A Recipe Portal for a healthy you</em></p>
+    </div>
+
+
+    <nav id="navbar">
+    <ul>
+      <li>
+        <a href="{% url 'recipe-home' %}" style="padding: 0px"><img src="{% static 'recipe/img/base_imgs/logo.jpeg' %}" height="50px"></a>
+      </li>
+
+      <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Categories</a>
+    <div class="dropdown-content">
+      <a href="{% url 'recipe-category' cat_name='Soup' %}">Soup</a>
+      <a href="{% url 'recipe-category' cat_name='Salad' %}">Salad</a>
+      <a href="{% url 'recipe-category' cat_name='Starter' %}">Starter</a>
+      <a href="{% url 'recipe-category' cat_name='Meal' %}">Meal</a>
+      <a href="{% url 'recipe-category' cat_name='Dessert' %}">Dessert</a>
+      <a href="{% url 'recipe-category' cat_name='Drink' %}">Drink</a>
+      <a href="{% url 'recipe-category' cat_name='Bakery' %}">Bakery</a>
+    </div>
+  </li>
+
+      <li>
+        <a href="{% url 'recipe-home' %}">Home</a>
+      </li>
+
+      <li>
+        <a href="{% url 'recipe-about' %}">About</a>
+      </li>
+
+      <li>
+        <a href="{% url 'recipe-contact' %}">Contact</a>
+      </li>
+    </ul>
+      </nav>
+
+
+	</header>
+
+	<main>
+
+    {% if messages %}
+      {% for message in messages %}
+          <div class="flash-msg"> <h2><strong><em>{{ message }}</em></strong></h2> </div>
+      {% endfor %}
+    {% endif %}
+   
+   {% block main %}{% endblock %}
+
+
+
+  </main>
+
+	<footer>
+
+      <a href="{% url 'recipe-contact' %}"><button id="contact-button" type="button">Contact us here!!</button></a>
+  </footer>
+
+</body>
+</html>
